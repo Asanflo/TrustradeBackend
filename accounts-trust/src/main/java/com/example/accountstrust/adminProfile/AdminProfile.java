@@ -1,48 +1,47 @@
-package com.example.accountstrust.vendorProfile;
+package com.example.accountstrust.adminProfile;
 
+import com.example.accountstrust.assignRole.AssignRole;
 import com.example.accountstrust.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
-//Definition de l'entite profile du vendeur
+/*
+    Definition de la classe qui va prendre va permettre de gerer les profils admin
+*/
 @Entity
-@Table(name="vendor_profiles")
+@Table(name = "admin_profiles")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class VendorProfile {
+public class AdminProfile {
     @Id
     @GeneratedValue
     @UuidGenerator
-    @Column(unique = true, nullable = false, updatable = false)
     private UUID id;
-    private Integer rating;
-    private String badge;
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-//    Lors de la creation du profile, son statut par defaut est en attente
-    private KycStatus kycStatus =  KycStatus.PENDING;
-//    Variable pour la journalisation
+    private String level;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-//    Definition de la relation entre Profile vendeur et user
+//    Definition de la relation existante avec user
     @OneToOne
     @JoinColumn(nullable = false)
     private User user;
+    @OneToMany(mappedBy = "assignedBy", cascade = CascadeType.ALL)
+    private List<AssignRole> adminAssignedBy;
+    @OneToMany(mappedBy = "assignedTo", cascade = CascadeType.ALL)
+    private List<AssignRole> adminAssignedTo;
 
-    //    Gestion automatique des variables de date createAt et updateAt
     @PrePersist
     public void onCreate() {
         this.createdAt = LocalDateTime.now();
     }
-
     @PreUpdate
     public void onUpdate() {
         this.updatedAt = LocalDateTime.now();

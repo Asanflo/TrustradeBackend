@@ -2,6 +2,7 @@ package com.example.accountstrust.user;
 
 import com.example.accountstrust.emailToken.EmailToken;
 import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,11 @@ import java.util.UUID;
 
 @Entity
 @Table (name = "users")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class User {
     @Id
     @GeneratedValue
@@ -22,8 +28,10 @@ public class User {
     private String phone;
     private String password;
     private Integer trust_score;
-    private Boolean isActive;
-    private Boolean isSuspended;
+    @Column(nullable = false)
+    private Boolean isActive = true;
+    @Column(nullable = false)
+    private Boolean isSuspended = false;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LocalDateTime last_login_at;
@@ -41,11 +49,11 @@ public class User {
 //    Gestion automatique des variables de date createAt et updateAt
     @PrePersist
     public void onCreate() {
-        createdAt = LocalDateTime.now();
+        this.createdAt = LocalDateTime.now();
     }
 
     @PreUpdate
     public void onUpdate() {
-        updatedAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 }
