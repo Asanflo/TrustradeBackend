@@ -2,5 +2,8 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/accounts-trust/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dicovery-trust/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/discovery-trust/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-trust/src/main/java" charset="UTF-8" />
   </component>
 </project>

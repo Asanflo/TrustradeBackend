@@ -8,5 +8,7 @@ import java.util.UUID;
 public interface AdminCredentialRepository extends JpaRepository<AdminCredential, UUID> {
 
 
-    Optional<AdminCredential> findById(UUID id);
+    Optional<AdminCredential> findByAdminProfileId(UUID adminProfileId);
+
+    boolean existsByAdminProfileId(UUID adminProfileId);
 }
