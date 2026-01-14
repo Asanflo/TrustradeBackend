@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id : route1
+              uri: lb://ACCOUNTS-TRUST
+              predicates:
+                - Path= /accounts/**
