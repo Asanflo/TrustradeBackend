@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/gateway-trust/pom.xml" />
         <option value="$PROJECT_DIR$/dicovery-trust/pom.xml" />
         <option value="$PROJECT_DIR$/discovery-trust/pom.xml" />
+        <option value="$PROJECT_DIR$/config-trust/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

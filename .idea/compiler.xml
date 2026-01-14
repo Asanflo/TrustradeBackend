@@ -10,15 +10,19 @@
         <module name="accounts-trust" />
         <module name="gateway-trust" />
         <module name="discovery-trust" />
+        <module name="config-trust" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="config-tru" target="21" />
       <module name="dicovery-trust" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="accounts-trust" options="-parameters" />
+      <module name="config-tru" options="-parameters" />
+      <module name="config-trust" options="-parameters" />
       <module name="dicovery-trust" options="-parameters" />
       <module name="discovery-trust" options="-parameters" />
       <module name="gateway-trust" options="-parameters" />
